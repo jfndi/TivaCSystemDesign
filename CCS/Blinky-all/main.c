@@ -36,9 +36,21 @@ void configureUART(void)
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
     /*
+     * Wait until GPIO A is ready.
+     */
+    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA))
+    {}
+
+    /*
      * Enable UART0.
      */
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+
+    /*
+     * Wait until UART 0 is ready.
+     */
+    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_UART0))
+    {}
 
     /*
      * Configure GPIO pins for UART mode.
@@ -86,23 +98,27 @@ int main(void)
      * 0x400FE608 - 0x40000000 = 0xEF608 and the bit number is 5.
      *
      */
+    UARTprintf("---->> Enable GPIO F.\n");
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
     /*
      * Here we check register 108 (using the same bit band technique) until it
      * indicates that the GPIIOF is ready.
      */
+    UARTprintf("---->> Wait for GPIO F to be ready.\n");
     while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF))
     {}
 
     /*
-     * Set the green LED as output.
+     * Set the LEDs as output.
      */
+    UARTprintf("---->> Configure all LEDs as output.\n");
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
     /*
      * Endless loop.
      */
+    UARTprintf("---->> Entering endless toggling loop.\n");
     while (1)
     {
         /*
