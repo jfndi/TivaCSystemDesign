@@ -1,7 +1,7 @@
-/.metadata/
-/.jxbrowser.userdata/
-/dvt/
-/RemoteSystemsTempFiles/
+.metadata/
+.jxbrowser.userdata/
+dvt/
+RemoteSystemsTempFiles/
 .settings/
 Debug/
 /.gitignore.bak
