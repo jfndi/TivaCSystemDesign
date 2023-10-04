@@ -6,3 +6,7 @@ RemoteSystemsTempFiles/
 Debug/
 /.gitignore.bak
 /README.md.bak
+/**/*.kyria
+/**/Listings/**
+/**/Objects/**
+/**/RTE/**
