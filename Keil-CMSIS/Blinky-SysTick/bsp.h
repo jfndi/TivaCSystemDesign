@@ -10,6 +10,6 @@
 #define LED_ALL     LED_RED|LED_BLUE|LED_GREEN
 
 __attribute__((__noreturn__)) void assert_failed(char const* file, int line);
-void SysTickHandler(void);
+void SysTick_Handler(void);
 
 #endif
